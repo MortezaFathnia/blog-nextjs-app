@@ -9,7 +9,6 @@ export async function POST(req: NextRequest) {
   try {
     const headersList = cookies()
     const token = headersList.get('token')
-    console.log(token)
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };

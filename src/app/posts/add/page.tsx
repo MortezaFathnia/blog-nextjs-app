@@ -6,8 +6,10 @@ export default function addPostPage() {
   const token = cookieStore.get("token");
   return (
     <>
-      <div>AddPostPage</div>
-      <AddPostForm token={token}/>
+      <h4 className="text-center text-xl font-bold mb-[2rem]">Add Post</h4>
+      <section className="bg-ct-blue-600 grid place-items-center">
+        <AddPostForm token={token} />
+      </section>
     </>
   )
 }

@@ -21,7 +21,7 @@ import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies"
 
 
 
-export default function EditPostForm({token,post}:{token:any,post:Post}) {
+export default function EditPostForm({ token, post }: { token: any, post: Post }) {
   const store = useStore();
   const router = useRouter();
   const methods = useForm<PostAddInput>({
@@ -44,8 +44,7 @@ export default function EditPostForm({token,post}:{token:any,post:Post}) {
   async function EditPostFunction(postItem: PostEditInput) {
     store.setRequestLoading(true);
     try {
-      const responsePost = await editPost(token,post.id,JSON.stringify(postItem));
-      console.log(responsePost)
+      const responsePost = await editPost(token, post.id, JSON.stringify(postItem));
       return router.push("/posts");
     } catch (error: any) {
       if (error instanceof Error) {
@@ -60,7 +59,6 @@ export default function EditPostForm({token,post}:{token:any,post:Post}) {
   }
 
   const onSubmitHandler: SubmitHandler<PostEditInput> = (values) => {
-    console.log(values)
     EditPostFunction(values);
   };
 
@@ -68,7 +66,7 @@ export default function EditPostForm({token,post}:{token:any,post:Post}) {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className="max-w-md w-full mx-auto overflow-hidden shadow-lg bg-ct-dark-200 rounded-2xl p-8 space-y-5"
+        className="max-w-md w-full mx-auto overflow-hidden shadow-lg form-bg rounded-2xl p-8 space-y-5"
       >
         <FormInput label="Title" value={post.title} name="title" />
         <FormInput label="Content" name="content" value={post.content} multiline={4} />

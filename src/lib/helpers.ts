@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { toast } from "react-toastify"
+import { toast } from "react-hot-toast"
 import { ZodError } from "zod";
 
 type EnvVariableKey = "JWT_SECRET_KEY" | "JWT_EXPIRES_IN";

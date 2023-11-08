@@ -40,7 +40,7 @@ body {
 
 input,
 textarea {
-  color: text;
+  color: var(--text);
 }
 
 h1,

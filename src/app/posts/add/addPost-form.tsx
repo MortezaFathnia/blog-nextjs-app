@@ -66,7 +66,7 @@ export default function AddPostForm(token:any) {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className="max-w-md w-full mx-auto overflow-hidden shadow-lg bg-ct-dark-200 rounded-2xl p-8 space-y-5"
+        className="max-w-md w-full mx-auto overflow-hidden shadow-lg form-bg rounded-2xl p-8 space-y-5"
       >
         <FormInput label="Title" name="title" />
         <FormInput label="Content" name="content" multiline={4} />

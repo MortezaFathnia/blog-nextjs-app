@@ -40,7 +40,6 @@ export default function RegisterForm() {
     store.setRequestLoading(true);
     try {
       const user = await apiRegisterUser(JSON.stringify(credentials));
-      console.log(user)
       return router.push("/login");
     } catch (error: any) {
       if (error instanceof Error) {
@@ -55,7 +54,6 @@ export default function RegisterForm() {
   }
 
   const onSubmitHandler: SubmitHandler<RegisterUserInput> = (values) => {
-    console.log(values)
     RegisterUserFunction(values);
   };
 

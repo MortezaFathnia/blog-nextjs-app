@@ -1,6 +1,5 @@
 import { getErrorResponse } from "@/lib/helpers"
 import { RegisterUserInput, RegisterUserSchema } from "@/lib/validations/user.schema"
-import { error } from "console"
 import { NextRequest, NextResponse } from "next/server"
 import { ZodError } from "zod"
 const SERVER_ENDPOINT = 'https://ffrhqp-3000.csb.app'
@@ -21,7 +20,6 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(data)
     })
     const registeredUser = await res.json()
-    console.log(registeredUser)
     if (res.status == 200) {
       const response = new NextResponse(
         JSON.stringify({

@@ -40,7 +40,7 @@ export default function LoginForm() {
     store.setRequestLoading(true);
     try {
       await apiLoginUser(JSON.stringify(credentials));
-      store.authUser=true;
+      store.setAuthUser(true);
       toast.success("Logged in successfully");
       return router.push("/posts");
     } catch (error: any) {

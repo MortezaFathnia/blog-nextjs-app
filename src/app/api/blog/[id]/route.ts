@@ -9,8 +9,6 @@ export async function PUT(req: NextRequest, context: { params: { id: string } })
   try {
     const headersList = cookies()
     const token = headersList.get('token')
-    console.log('1212', context.params.id)
-
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     }
@@ -56,7 +54,6 @@ export async function DELETE(req: NextRequest, context: { params: { id: string }
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     }
-    console.log(token)
     if (token) {
       headers["Authorization"] = `Bearer ${token.value}`
     }
