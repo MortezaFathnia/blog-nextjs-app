@@ -6,8 +6,9 @@ export default function LightTheme() {
         --bg-secondary: #f9fafb;
         --header: var(--pink);
         --textNormal: #222;
-        --textTitle: #222;
+        --textTitle: #fff;
         --textLink: #d23669;
+        --nav-link:#fff;
         --hr: rgba(0, 0, 0, 0.2);
         --inlineCode-bg: rgba(255, 229, 100, 0.2);
         --inlineCode-text: #1a1a1a;

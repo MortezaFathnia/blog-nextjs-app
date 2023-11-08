@@ -1,35 +1,36 @@
 "use client"
-import Spinner from "./Spinner";
-import Link from "next/link";
-import useSession from "@/lib/useSession";
-import useStore from "@/store";
-import { apiLogoutUser } from "@/lib/api-requests";
-import { useRouter } from "next/navigation";
+import Spinner from "./Spinner"
+import Link from "next/link"
+import useStore from "@/store"
+import { apiLogoutUser } from "@/lib/api-requests"
+import { useRouter } from "next/navigation"
+import ChangeTheme from "../layout/ChangeTheme"
 
 const Header = () => {
-  const store = useStore();
-  // const user = useSession();
-  const authUser=store.authUser;
-  const router = useRouter();
+  const store = useStore()
+  const authUser = store.authUser
+  const router = useRouter()
   const handleLogout = async () => {
-    store.setRequestLoading(true);
+    store.setRequestLoading(true)
     try {
-      await apiLogoutUser();
+      await apiLogoutUser()
     } catch (error) {
     } finally {
-      store.reset();
-      router.push("/login");
+      store.reset()
+      router.push("/login")
     }
-  };
+  }
 
   return (
     <>
-      <header className="bg-white h-20">
+      <header className="nav-bg h-20 mb-1">
         <nav className="h-full flex justify-between container items-center">
           <div>
-            <Link href="/" className="text-ct-dark-600 text-2xl font-semibold">
-              CodevoWeb
-            </Link>
+            <h4>
+              <Link href="/" className="text-ct-dark-600 logo text-2xl">
+                TechWeb
+              </Link>
+            </h4>
           </div>
           <ul className="flex items-center gap-4">
             <li>
@@ -63,6 +64,10 @@ const Header = () => {
                 </li>
               </>
             )}
+            <li>
+            <ChangeTheme />
+            </li>
+
           </ul>
         </nav>
       </header>
@@ -70,7 +75,7 @@ const Header = () => {
         {store.requestLoading && <Spinner color="text-ct-yellow-600" />}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

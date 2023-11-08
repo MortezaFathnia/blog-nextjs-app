@@ -1,5 +1,4 @@
 "use client";
-
 import {
   RegisterUserInput,
   RegisterUserSchema,
@@ -41,6 +40,7 @@ export default function RegisterForm() {
     store.setRequestLoading(true);
     try {
       const user = await apiRegisterUser(JSON.stringify(credentials));
+      console.log(user)
       return router.push("/login");
     } catch (error: any) {
       if (error instanceof Error) {
@@ -55,6 +55,7 @@ export default function RegisterForm() {
   }
 
   const onSubmitHandler: SubmitHandler<RegisterUserInput> = (values) => {
+    console.log(values)
     RegisterUserFunction(values);
   };
 
@@ -62,7 +63,7 @@ export default function RegisterForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className="max-w-md w-full mx-auto overflow-hidden shadow-lg bg-ct-dark-200 rounded-2xl p-8 space-y-5"
+        className="max-w-md w-full mx-auto overflow-hidden shadow-lg form-bg rounded-2xl p-8 space-y-5"
       >
         <FormInput label="User name" name="username" />
         <FormInput label="Email" name="email" type="email" />
@@ -72,12 +73,12 @@ export default function RegisterForm() {
           name="passwordConfirm"
           type="password"
         />
-        <span className="block">
+        {/* <span className="block">
           Already have an account?{" "}
           <Link href="/login" className="text-ct-blue-600">
             Login Here
           </Link>
-        </span>
+        </span> */}
         <LoadingButton
           loading={store.requestLoading}
           textColor="text-ct-blue-600"

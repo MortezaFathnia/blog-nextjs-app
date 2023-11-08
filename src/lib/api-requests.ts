@@ -33,6 +33,18 @@ export async function apiRegisterUser(
   return handleResponse<UserResponse>(response).then((data) => data.data.user);
 }
 
+export async function apiLogoutUser(): Promise<void> {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/auth/logout`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return handleResponse<void>(response);
+}
+
 export async function apiLoginUser(credentials: string): Promise<string> {
   const response = await fetch(`${SERVER_ENDPOINT}/api/auth/login`, {
     method: "POST",
@@ -45,17 +57,6 @@ export async function apiLoginUser(credentials: string): Promise<string> {
   return handleResponse<UserLoginResponse>(response).then((data) => data.response);
 }
 
-export async function apiLogoutUser(): Promise<void> {
-  const response = await fetch(`${SERVER_ENDPOINT}/api/auth/logout`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  return handleResponse<void>(response);
-}
 
 export async function apiGetAuthUser(token?: string): Promise<FilteredUser> {
   const headers: Record<string, string> = {
@@ -107,6 +108,40 @@ export async function createPost(token:string,post:string):Promise<any> {
     credentials: "include",
     headers,
     body:post
+  });
+
+  return handleResponse(response).then((data) => data);
+}
+
+export async function editPost(token:string,postId:number,post:string):Promise<any> {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  const response = await fetch(`${SERVER_ENDPOINT}/api/blog/${postId}`, 
+  {
+    method: "PUT",
+    credentials: "include",
+    headers,
+    body:post
+  });
+
+  return handleResponse(response).then((data) => data);
+}
+
+export async function deletePost(postId:number):Promise<any> {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+
+  const response = await fetch(`${SERVER_ENDPOINT}/api/blog/${postId}`, 
+  {
+    method: "DELETE",
+    credentials: "include",
+    headers,
   });
 
   return handleResponse(response).then((data) => data);

@@ -5,6 +5,7 @@ type FormInputProps = {
   label: string
   name: string
   type?: string
+  value?:string
   multiline?: number
 }
 
@@ -12,6 +13,7 @@ const FormInput: React.FC<FormInputProps> = ({
   label,
   name,
   type = "text",
+  value,
   multiline
 }) => {
   const {
@@ -26,6 +28,7 @@ const FormInput: React.FC<FormInputProps> = ({
       {multiline ? (
         <textarea
           rows={multiline}
+          defaultValue={value ? value : ''}
           className="block w-full rounded-2xl appearance-none focus:outline-none py-2 px-4"
           {...register(name)}
         />
@@ -33,6 +36,7 @@ const FormInput: React.FC<FormInputProps> = ({
         <input
           type={type}
           placeholder=" "
+          defaultValue={value ? value : ''}
           className="block w-full rounded-2xl appearance-none focus:outline-none py-2 px-4"
           {...register(name)}
         />

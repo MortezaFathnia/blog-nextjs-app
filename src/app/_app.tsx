@@ -1,12 +1,12 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { UiProvider } from '../components/UiContext'
 import {
   Hydrate,
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
 import React from 'react'
+import ThemeWrapper from '@/components/layout/layout'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -14,9 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <UiProvider>
-          <Component {...pageProps} />
-        </UiProvider>
+            <Component {...pageProps} />
       </Hydrate>
     </QueryClientProvider>
   )

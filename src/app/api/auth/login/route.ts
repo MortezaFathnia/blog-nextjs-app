@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(data),
     })
     const { response:token} = await res.json();
-
+  
     const tokenMaxAge = 60 * 60000
     const cookieOptions = {
       name: "token",

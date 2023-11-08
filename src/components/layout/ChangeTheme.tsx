@@ -2,17 +2,16 @@
 import { useContext, useState } from 'react';
 import LightTheme from './LightTheme';
 import Image from 'next/image';
-import UiContext, { UiContextInterface, UiContextType } from '../UiContext';
+import { ThemeContext } from '../../context/ThemeContext';
 function ChangeTheme() {
   //eslint disable next line
-  const { darkTheme, setDarkTheme } = useContext(UiContext);
-
+  const {theme,toggleTheme} = useContext(ThemeContext);
   return (
-    <>
+    <div className='flex items-center'>
       <div
-        onClick={() => setDarkTheme(!darkTheme)}
+        onClick={toggleTheme}
         className={
-          darkTheme ? 'react-toggle react-toggle--checked' : 'react-toggle'
+          theme==='dark' ? 'react-toggle react-toggle--checked' : 'react-toggle'
         }
       >
         <div className='react-toggle-track'>
@@ -44,8 +43,8 @@ function ChangeTheme() {
           aria-label='Switch between Dark and Light mode'
         />
       </div>
-      {!darkTheme && <LightTheme />}
-    </>
+      {theme!=='dark' && <LightTheme />}
+    </div>
   );
 }
 

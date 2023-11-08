@@ -9,13 +9,16 @@
 }
 
 :root {
-  --pink: #ffa7c4;
+  --text: #222;
+  --pink: #F06292;
   --bg: #282c35;
   --bg-secondary: #363c48;
-  --header: #fff;
+  --header: #1c1f25;
   --textNormal: hsla(0, 0%, 100%, 0.88);
   --textTitle: #fff;
   --textLink: var(--pink);
+  --nav-link:var(--pink);
+  --bg-button:var(--pink);
   --hr: hsla(0, 0%, 100%, 0.2);
   --inlineCode-bg: rgba(115, 124, 153, 0.2);
   --inlineCode-text: #e6e6e6;
@@ -35,8 +38,9 @@ body {
 }
 
 
-input,textarea{
-  color:black;
+input,
+textarea {
+  color: text;
 }
 
 h1,
@@ -53,6 +57,8 @@ a {
 button {
   font: inherit;
   cursor: pointer;
+  background-color: var(--bg-button) !important;
+  color:#fff
 }
 
 .container {
@@ -93,6 +99,7 @@ h1 {
   font-size: 2.5rem;
   line-height: 1.1;
 }
+
 h3 {
   margin-left: 0;
   margin-right: 0;
@@ -103,12 +110,13 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.75rem;
   color: inherit;
-  font-family: 'Merriweather','Georgia',serif;
+  font-family: 'Merriweather', 'Georgia', serif;
   font-weight: 900;
   text-rendering: optimizeLegibility;
   font-size: 1.4427rem;
   line-height: 1.1;
 }
+
 .react-toggle {
   touch-action: pan-x;
   display: inline-block;
@@ -213,4 +221,25 @@ h3 {
 [type=radio] {
   box-sizing: border-box;
   padding: 0;
+}
+
+.nav-bg {
+  background-color: var(--header);
+}
+.nav-bg  a{
+  font-size: 1.1rem;
+  color:var(--nav-link);
+}
+.form-bg {
+  background-color: var(--bg-secondary);
+}
+
+.logo {
+  font-size: 2rem !important;
+  line-height: 2.625rem;
+  box-shadow: none;
+  text-decoration: none;
+  font-weight: 800;
+  color: var(--textTitle);
+  font-family: Montserrat, sans-serif;
 }

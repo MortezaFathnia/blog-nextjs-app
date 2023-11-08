@@ -1,13 +1,20 @@
-import { Fragment } from "react";
+import { Fragment, ReactNode } from "react"
+import Header from "../ui/Header"
+import { FC } from 'react'
 
-function Layout(props) {
-  return (
-    <Fragment>
-      <main className="container">
-        {props.children}
-      </main>
-    </Fragment>
-  );
+interface layoutProps {
+  children:ReactNode
 }
 
-export default Layout;
+const ThemeWrapper: FC<layoutProps> = ({children}) => {
+  return(
+    <Fragment>
+      <Header />
+      <main className="container">
+        {children}
+      </main>
+    </Fragment>
+  )
+}
+
+export default ThemeWrapper

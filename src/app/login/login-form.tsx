@@ -1,5 +1,4 @@
 "use client";
-
 import { LoginUserInput, LoginUserSchema } from "@/lib/validations/user.schema";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -64,7 +63,7 @@ export default function LoginForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className="max-w-md w-full mx-auto overflow-hidden shadow-lg bg-ct-dark-200 rounded-2xl p-8 space-y-5"
+        className="max-w-md w-full mx-auto overflow-hidden shadow-lg form-bg rounded-2xl p-8 space-y-5"
       >
         <FormInput label="Email" name="email" type="email" />
         <FormInput label="Password" name="password" type="password" />
